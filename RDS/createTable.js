@@ -1,11 +1,14 @@
 const mysql = require('mysql');
 
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+
 const con = mysql.createConnection({
-    host: 'rdsdb.cfaag2msczyj.eu-north-1.rds.amazonaws.com',
-    user: 'admin',
-    password: 'Priyankawadle',
-    database:'testdb',
-    port:3306
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+    port:process.env.PORT
 });
 
 con.connect(function(err) {
